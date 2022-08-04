@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download | ShareMe - File Sharing Made Easy</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <hgroup class="head-group" id="hg-1">
+        <img src="/img/logo.png" alt="logo" />
+        <h1>Share <span>Me</span></h1>
+      </hgroup>
+      <hgroup class="head-group" id="hg-2">
+        <aside id="social-links">
+          <a href="https://github.com/Nikhil1602" target="_blank">
+            <img id="img1" src="/img/github.png" alt="github" />
+          </a>
+          <a href="https://www.instagram.com/nik5257/" target="_blank">
+            <img id="img2" src="/img/instagram.png" alt="instagram" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikhil-barot-508968223/"
+            target="_blank"
+          >
+            <img id="img3" src="/img/linkedin.png" alt="linkedin" />
+          </a>
+        </aside>
+      </hgroup>
+    </header>
+    <section class="download">
+      <img
+        class="download__icon"
+        src="/img/download-sd.svg"
+        alt="shareMe-download"
+      />
+      <% if(locals.error){ %>
+      <h1><%= locals.error %> 😏</h1>
+      <% } else { %>
+      <h2>Your file is ready to download</h2>
+      <p>Link expires in 24 hours</p>
+      <div class="download__meta">
+        <h4><%= fileName %></h4>
+        <small><%= parseInt(fileSize/1000) %> KB</small>
+      </div>
+      <div class="send-btn-container">
+        <a id="download-btn" href="<%= downloadLink %>">Download file</a>
+      </div>
+      <% } %>
+    </section>
+    <section id="toast"></section>
+    <script>
+      var downloadBtn = document.getElementById("download-btn");
+      var toast = document.getElementById("toast");
+
+      downloadBtn.addEventListener("click", () => {
+        toast.innerText = "Downloading...";
+        toast.style.transform = "translate(-50%, 6rem)";
+
+        setTimeout(() => {
+          toast.style.transform = "translate(-50%, 0.25rem)";
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
