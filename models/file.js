@@ -14,7 +14,4 @@ const fileSchema = new Schema(
   { timestamps: true }
 );
 
-// const File = mongoose.model("File", fileSchema);
-
 export default mongoose.model("File", fileSchema);
-// export default File;
